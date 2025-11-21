@@ -1,0 +1,17 @@
+{
+    "name": "hohollol",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "http-server": "^14.1.1",
+        "matter-js": "^0.20.0"
+    }
+}

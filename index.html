@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>hohol.lol</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        /* Canvas для Matter.js (физика, кубики) */
+        #matter-canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            image-rendering: pixelated;
+        }
+
+        /* Canvas для свинок (overlay, выше) */
+        #pigs-canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            /* клики проходят насквозь к Matter canvas */
+            image-rendering: pixelated;
+            z-index: 2;
+        }
+
+        /* Контент под канвасами */
+        .content {
+            position: relative;
+            z-index: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            color: white;
+        }
+
+        /* Видеоплеер */
+        #video-player {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #play-pause-btn {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        #play-pause-btn:hover {
+            background: #45a049;
+        }
+
+        #volume-slider {
+            width: 100px;
+        }
+
+        #volume-value {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Фоновое видео */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="content">
+        <h1>Добро пожаловать на hohol.lol</h1>
+        <p>Контент сайта здесь. Свинки бегают поверх, кубики реагируют на музыку.</p>
+    </div> -->
+
+    <!-- Canvas для Matter.js (физика) -->
+    <canvas id="matter-canvas"></canvas>
+
+    <!-- Canvas для свинок (overlay) -->
+    <canvas id="pigs-canvas"></canvas>
+
+    <!-- Фоновое видео -->
+    <video id="background-video" preload="auto" loop>
+        <source src="assets/haslki.webm" type="video/webm">
+        Your browser does not support the video element.
+    </video>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
