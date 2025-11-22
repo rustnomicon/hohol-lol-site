@@ -98,14 +98,42 @@
             z-index: 0;
             opacity: 0.3;
         }
+
+        #start-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        #start-btn {
+            font-family: monospace;
+            font-size: 32px;
+            padding: 16px 40px;
+            border-radius: 999px;
+            border: 3px solid hsl(0, 100%, 50%);
+            background: #111;
+            color: hsl(0, 100%, 50%);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        #start-btn:hover {
+            background: hsl(0, 100%, 50%);
+            color: #111;
+        }
     </style>
 </head>
 
 <body>
-    <!-- <div class="content">
-        <h1>Добро пожаловать на hohol.lol</h1>
-        <p>Контент сайта здесь. Свинки бегают поверх, кубики реагируют на музыку.</p>
-    </div> -->
+    <div id="start-overlay">
+        <button id="start-btn">Начать гойду</button>
+    </div>
+
 
     <!-- Canvas для Matter.js (физика) -->
     <canvas id="matter-canvas"></canvas>

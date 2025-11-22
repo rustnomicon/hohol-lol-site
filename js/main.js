@@ -212,6 +212,31 @@ let lastBeatTime = 0;
 const BEAT_THRESHOLD = 40;
 const BEAT_COOLDOWN = 150;
 
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('start-overlay');
+    const startBtn = document.getElementById('start-btn');
+
+    startBtn.addEventListener('click', async () => {
+        try {
+            await initAudio();
+            connectAudioSource();
+
+            backgroundVideo.muted = false;
+            backgroundVideo.volume = 0.8;
+
+            await backgroundVideo.play();
+            isPlaying = true;
+            startAudioLoop();
+
+            overlay.remove(); // убираем оверлей
+
+        } catch (e) {
+            console.error('Не удалось запустить видео/аудио по кнопке гойда:', e);
+        }
+    }, { once: true });
+});
+
+
 function checkForBeat(volumeLevel) {
     if (volumeLevel > BEAT_THRESHOLD) {
         const now = Date.now();
